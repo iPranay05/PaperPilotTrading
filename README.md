@@ -1,4 +1,4 @@
-# 🤖 PaperPilot - Agentic Paper Trading Bot
+# 🤖 AlphaAgent - Agentic Paper Trading Bot
 
 An autonomous AI-powered paper trading system that uses multi-agent debate to make real-time trading decisions on stocks, crypto, and indices.
 
@@ -242,5 +242,6 @@ Submission deadline: [Your Date]
 ---
 
 ⭐ Star this repo if you found it helpful!
-#   P a p e r P i l o t T r a d i n g  
+#   P a p e r P i l o t T r a d i n g 
+ 
  

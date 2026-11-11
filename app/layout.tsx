@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'PaperPilot — INR Paper Trading & Agent Activity',
+  title: 'AlphaAgent — INR Paper Trading & Agent Activity',
   description: 'Practice stock and crypto trading in an INR-based simulated portfolio with transparent agent decision logs and risk controls.',
   generator: 'v0.app',
   icons: {

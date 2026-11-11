@@ -48,7 +48,7 @@ export async function submitAlpacaPaperOrder(order: AlpacaOrderRequest): Promise
       type: order.type ?? 'market',
       ...(order.limitPrice ? { limit_price: String(order.limitPrice) } : {}),
       time_in_force: order.timeInForce ?? 'day',
-      client_order_id: order.clientOrderId ?? `paperpilot-${randomUUID()}`,
+      client_order_id: order.clientOrderId ?? `alphaagent-${randomUUID()}`,
     }),
     cache: 'no-store',
   })

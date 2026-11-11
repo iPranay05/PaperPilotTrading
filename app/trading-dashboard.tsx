@@ -75,7 +75,7 @@ export function TradingDashboard() {
 
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem('paperpilot-account-v2')
+      const saved = window.localStorage.getItem('alphaagent-account-v2')
       if (saved) {
         const data = JSON.parse(saved)
         const savedCash = typeof data.cash === 'number' ? data.cash : initialCash
@@ -111,7 +111,7 @@ export function TradingDashboard() {
 
   useEffect(() => {
     if (!hydrated) return
-    window.localStorage.setItem('paperpilot-account-v2', JSON.stringify({ schemaVersion: 4, agentEngineVersion: 1, cash, positions, portfolioHistory, trades, journal, decisionLog, running, killSwitch, dailyLossLimit, dailyLossLimitInputINR, maxOrderValueInputINR, maxOrderValueINR, riskCapsConfirmed, riskPercent, dayStartEquity, tradingDay, strategy }))
+    window.localStorage.setItem('alphaagent-account-v2', JSON.stringify({ schemaVersion: 4, agentEngineVersion: 1, cash, positions, portfolioHistory, trades, journal, decisionLog, running, killSwitch, dailyLossLimit, dailyLossLimitInputINR, maxOrderValueInputINR, maxOrderValueINR, riskCapsConfirmed, riskPercent, dayStartEquity, tradingDay, strategy }))
   }, [cash, positions, portfolioHistory, trades, journal, decisionLog, running, killSwitch, dailyLossLimit, dailyLossLimitInputINR, maxOrderValueInputINR, maxOrderValueINR, riskCapsConfirmed, riskPercent, dayStartEquity, tradingDay, strategy, hydrated])
 
   useEffect(() => {
@@ -561,8 +561,8 @@ export function TradingDashboard() {
         <div className="workspace-label">WORKSPACE</div>
         <button className={`side-link ${activeView === 'overview' ? 'active' : ''}`} onClick={() => setActiveView('overview')}><LayoutDashboard size={17} /> Overview</button>
         <button className={`side-link ${activeView === 'agent' ? 'active' : ''}`} onClick={() => setActiveView('agent')}><Bot size={17} /> Agent activity</button>
-        <button className="side-link" onClick={() => { setActiveView('overview'); setActiveTab('Positions') }}><Wallet size={17} /> Portfolio</button>
-        <button className="side-link" onClick={() => { setActiveView('overview'); setFilter('All assets') }}><Activity size={17} /> Markets <span className="side-count">8</span></button>
+        <button className="side-link" onClick={() => { setActiveView('overview'); setActiveTab('Positions'); setTimeout(() => document.querySelector('.activity-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100) }}><Wallet size={17} /> Portfolio</button>
+        <button className="side-link" onClick={() => { setActiveView('overview'); setFilter('All assets'); setTimeout(() => document.querySelector('.markets-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100) }}><Activity size={17} /> Markets <span className="side-count">8</span></button>
         <div className="side-divider" />
         <div className="workspace-label">YOUR ACCOUNT</div>
         <div className="account-card"><span className="account-avatar">A</span><span className="account-copy"><strong>Alex Morgan</strong><small>Paper account</small></span><ChevronDown size={14} /></div>
@@ -606,7 +606,7 @@ export function TradingDashboard() {
             <AgentControlPanels running={running} startDisabledReason={!riskCapsConfirmed || maxOrderValueINR === null ? 'Enter and confirm a maximum new-entry value and daily loss cap in Hard risk controls before starting.' : killSwitch ? 'Kill switch engaged. Turn it off in Hard risk controls to resume.' : dailyLoss >= dailyLossLimit ? `Daily loss cap reached: ${formatUSDAsINR(dailyLoss)} used of ${formatUSDAsINR(dailyLossLimit)}. Raise the cap or wait until the next trading day.` : null} onRunningChange={setRunning} dailyPnl={dailyPnl} dailyLoss={dailyLoss} dailyLossLimit={dailyLossLimit} dailyLossLimitInputINR={dailyLossLimitInputINR} maxOrderValueInputINR={maxOrderValueInputINR} riskCapsConfirmed={riskCapsConfirmed} riskCapsAreValid={riskCapsAreValid} onDailyLossLimitInputChange={updateDailyLossCapInput} onMaxOrderValueInputChange={updateMaxOrderCapInput} onConfirmRiskCaps={confirmRiskCaps} onResetPaperDay={resetPaperDay} riskPercent={riskPercent} onRiskPercentChange={setRiskPercent} killSwitch={killSwitch} onKillSwitchChange={(active) => { setKillSwitch(active); if (active) setRunning(false) }} strategy={strategy} selectedSymbol={chosen.symbol} onStrategyChange={setStrategy} lastSignal={lastSignal} journal={journal} decisionLog={decisionLog} backtest={backtest} />
           </section>
 
-          <footer className="footer"><span><span className="footer-dot" /> Paper markets · simulated indicative prices <span className="footer-separator">·</span> Auto-refreshing</span><span>PaperPilot <span className="footer-separator">·</span> For educational use only</span></footer>
+          <footer className="footer"><span><span className="footer-dot" /> Paper markets · simulated indicative prices <span className="footer-separator">·</span> Auto-refreshing</span><span>AlphaAgent <span className="footer-separator">·</span> For educational use only</span></footer>
         </div>
       </section>
       {notice && <div className="toast" role="status"><Sparkles size={15} />{notice}<button aria-label="Dismiss notification" onClick={() => setNotice('')}><X size={14} /></button></div>}

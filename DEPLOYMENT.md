@@ -1,4 +1,4 @@
-# 🚀 Vercel Deployment Guide for PaperPilot
+# 🚀 Vercel Deployment Guide for AlphaAgent
 
 ## Quick Deploy (5 minutes)
 
